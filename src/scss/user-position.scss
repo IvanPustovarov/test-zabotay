@@ -1,0 +1,26 @@
+ .user-component{
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        & .position{
+            flex: 0.5;
+        }
+        & .name{
+            flex: 1;
+            text-align: start;
+        }
+        & .date-since{
+            flex: 1;
+        }
+        & .date-last{
+            flex: 1;
+            text-align: start;
+        }
+        & .exp{
+            flex: 1;
+            text-align: start;
+        }
+        & .lvl{
+            flex: 0.5;
+        }
+    }

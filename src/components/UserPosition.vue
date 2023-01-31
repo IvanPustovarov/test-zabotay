@@ -1,8 +1,9 @@
 <template>
   <div class="field user-component">
-    <div class="position">{{ user.position }}</div>
+    <div class="position">#{{ user.position }}</div>
     <div class="name">{{ user.name }}</div>
-    <div class="date">{{ parseDate() }}</div>
+    <div class="date-since">{{ parseDate(user.since) }}</div>
+    <div class="date-last">{{ parseDate(user.last_seen) }}</div>
     <div class="exp">{{ user.experience }}</div>
     <div class="lvl">{{ user.level }}</div>
   </div>
@@ -10,6 +11,7 @@
 
 <script>
  import '@/scss/mystyles.scss'
+ import '@/scss/user-position.scss';
 
 export default {
   name: 'UserPosition',
@@ -19,36 +21,25 @@ export default {
     user: Object,
   },
   methods: {
-    parseDate() {
-        const userSince = new Date(this.user.since);
-        const userLastSeen = new Date(this.user.last_seen);
-        return `Пользователь на сайте с ${userSince.toJSON().slice(0, 10)}.
-         Последний раз был в сети ${userLastSeen.toJSON().slice(0, 10)}`
+    parseDate(date) {
+      return `${new Intl.DateTimeFormat('en-GB').format(date)}`
     }
+  },
+  computed:{
   }
 }
 </script>
 
-<style lang="scss">
-    .user-component{
-        display: flex;
-        flex-direction: row;
-        text-align: center;
-        & .position{
-            flex: 0.5;
-        }
-        & .name{
-            flex: 2;
-            text-align: start;
-        }
-        & .date{
-            flex: 4;
-        }
-        & .exp{
-            flex: 1;
-        }
-        & .lvl{
-            flex: 0.5;
-        }
-    }
+<style scoped lang="scss">
+.user-component{
+  background-color: rgb(20, 63, 109);
+  color: rgb(191, 205, 226);
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  &:hover{
+    background-color: rgb(34, 102, 174);
+    color: rgb(195, 208, 224);
+  }
+}
 </style>
