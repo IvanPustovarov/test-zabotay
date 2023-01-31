@@ -1,5 +1,5 @@
 <template>
-  <div class="field user-component">
+  <div class="field user-component" :class="registerUser ? 'user-component registered' : ''">
     <div class="position">#{{ user.position }}</div>
     <div class="name">{{ user.name }}</div>
     <div class="date-since">{{ parseDate(user.since) }}</div>
@@ -16,9 +16,10 @@
 export default {
   name: 'UserPosition',
   components: {
-  },
+},
   props: {
     user: Object,
+    selectedUser: Number,
   },
   methods: {
     parseDate(date) {
@@ -26,6 +27,10 @@ export default {
     }
   },
   computed:{
+    registerUser() {
+      if(this.user.id === this.selectedUser) return this.user;
+      return '';
+    }
   }
 }
 </script>
@@ -40,6 +45,13 @@ export default {
   &:hover{
     background-color: rgb(34, 102, 174);
     color: rgb(195, 208, 224);
+  }
+}
+
+.registered{
+  background-color: rgb(180, 156, 96);
+  &:hover{
+    background-color: rgb(110, 96, 59);
   }
 }
 </style>

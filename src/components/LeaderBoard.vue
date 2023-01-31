@@ -12,7 +12,9 @@
             v-for="user in data"
             :key="user.id"
             :user="user"
+            :selectedUser="selectedUser"
         />
+        <PlugComponent />
     </div>
 </template>
 
@@ -20,16 +22,19 @@
 import '@/scss/mystyles.scss';
 import '@/scss/user-position.scss';
 import usersData from '../../user-data.json';
+import PlugComponent from './PlugComponent.vue';
 import UserPosition from './UserPosition.vue';
 
 export default {
   name: 'LeaderBoard',
   components: {
-    UserPosition
-  },
+    UserPosition,
+    PlugComponent
+},
   data () {
     return {
-        data: usersData
+        data: usersData,
+        selectedUser: 121232, // id of registered user
     }
   }
 }

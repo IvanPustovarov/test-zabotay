@@ -12,9 +12,6 @@ export default {
     LeaderBoard
 },
   methods: {
-    parseData() {
-
-    }
   }
 }
 </script>
